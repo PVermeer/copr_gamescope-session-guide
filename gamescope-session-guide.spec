@@ -3,7 +3,7 @@
 %global maincommit 41095240664afd9672b9861cd6892ae7133dbba6
 %global mainversioncommit %(echo -n %{maincommit} | head -c 8)
 
-Name: gamescope-session
+Name: gamescope-session-guide
 Version: 0.0.1
 Release: %{mainversioncommit}%{?dist}
 License: MIT

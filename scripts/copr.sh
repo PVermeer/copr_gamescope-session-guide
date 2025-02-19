@@ -1,5 +1,5 @@
 #!/bin/bash
 
 owner="pvermeer"
-project="gamescope-session"
-package="gamescope-session"
+project="gamescope-session-guide"
+package="gamescope-session-guide"
