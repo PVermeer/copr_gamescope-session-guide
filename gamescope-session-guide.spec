@@ -39,6 +39,7 @@ mkdir -p $RPM_BUILD_ROOT/usr
 mv %{workdir}/usr/* $RPM_BUILD_ROOT/usr/
 
 %files
-/usr
+%{_bindir}/*
+%{_datadir}/*
 
 %post
