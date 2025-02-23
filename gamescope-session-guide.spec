@@ -16,6 +16,9 @@ Requires: gamescope
 Requires: mangohud
 Requires: steam
 
+# Autopatch does not work because reasons....
+Source1: add-enviroment-variable-for-prefer-output.patch
+
 %define workdir %{_builddir}/%{repository}
 
 %description
@@ -30,6 +33,10 @@ The configuration is provided by https://github.com/%{author}/%{repository}.
 git clone https://github.com/%{author}/%{repository} %{workdir}
 cd %{workdir}
 git reset --hard %{maincommit}
+
+# Autopatch does not work because reasons....
+git apply %{SOURCE1}
+
 rm -rf .git
 
 %build
