@@ -4,7 +4,7 @@
 %global mainversioncommit %(echo -n %{maincommit} | head -c 8)
 
 Name: gamescope-session-guide
-Version: 0.0.1
+Version: 0.0.2
 Release: %{mainversioncommit}%{?dist}
 License: MIT
 Summary: RPM package to add a gamescope-session to login session options.
