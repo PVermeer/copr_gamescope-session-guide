@@ -5,8 +5,17 @@ Install [steam-using-gamescope-guide](https://github.com/shahnawazshahin/steam-u
 
 ONLY TESTED with Bazzite Gnome Desktop image
 
-### Fedora copr
+## Patches
+### Select the display for gamescope session
+Gamescope session is launched with `--prefer-output $GAMESCOPE_SESSION_OUTPUT` so setting:
+```sh
+# Gamescope session display connector
+GAMESCOPE_SESSION_OUTPUT=DP-1
+```
+in `/etc/enviroment` will try to use the display of your choice.
+
+# Fedora copr
 https://copr.fedorainfracloud.org/coprs/pvermeer/gamescope-session-guide
 
-### Credits
+# Credits
 - https://github.com/shahnawazshahin/steam-using-gamescope-guide
