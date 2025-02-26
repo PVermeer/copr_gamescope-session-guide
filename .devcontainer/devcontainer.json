@@ -19,7 +19,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"RVSmartPorting.rpm-spec-ext"
+				"RVSmartPorting.rpm-spec-ext",
+				"foxundermoon.shell-format"
 			]
 		}
 	},

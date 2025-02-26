@@ -42,8 +42,10 @@ rm -rf .git
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr
-mv %{workdir}/usr/* $RPM_BUILD_ROOT/usr/
+mkdir -p %{buildroot}/usr
+cp -r %{workdir}/usr/* %{buildroot}/usr/
+
+%check
 
 %files
 %{_bindir}/*

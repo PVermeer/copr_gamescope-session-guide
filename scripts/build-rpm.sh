@@ -2,7 +2,6 @@
 
 set -e
 
-
 source ./scripts/spec-file.sh
 source ./scripts/bash-color.sh
 bash ./scripts/checkout-deps.sh --apply-patches
@@ -19,7 +18,7 @@ echo_color "\nRPM Lint"
 rpmlint ./$spec_file
 
 echo_color "\nRPM Build"
-rpmbuild --define "_topdir $PWD/rpmbuild" -ba ./$spec_file
+echo_debug rpmbuild --define "_topdir $PWD/rpmbuild" -ba --noclean ./$spec_file
 
 echo_color "\n=== RPM Contents ==="
 

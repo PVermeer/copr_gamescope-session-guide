@@ -9,10 +9,12 @@ red='\033[1;31m'
 pink='\033[38:5:205m'
 purple='\033[1;35m'
 slate='\033[38:5:67m'
+cyan_dim='\033[2;36m'
 removecolor='\033[0m'
 arrow='➜'
 themecolor=$purple
 errorcolor=$red
+tracecolor=$cyan_dim
 
 THEME=$(gsettings get org.gnome.desktop.interface accent-color 2>/dev/null || echo "'purple'")
 THEME=${THEME//\'/}
@@ -76,7 +78,7 @@ parse_arguments() {
     esac
   done
   arguments="$@"
-  
+
   # Some shells (github actions!) dont pass the color
   # to the next line when provided before `\n`
   if [ "${arguments:0:2}" = "\n" ]; then
@@ -96,7 +98,14 @@ function undirect() { exec 2>&9; }
 function redirect() { exec 2>&8; }
 trap "redirect;" DEBUG
 PROMPT_COMMAND='undirect;'
-BASH_XTRACEFD=1 # set -x to stdout
+export BASH_XTRACEFD=1 # set -x to stdout
+
+# Trace color `set -x`
+exec 7> >(
+  while IFS='' read -r line || [ -n "$line" ]; do
+    echo -e "${tracecolor}${line}${removecolor}"
+  done
+)
 
 # Color wrapper
 echo_color() {
@@ -110,4 +119,11 @@ echo_error() {
   local arguments=$@
   parse_arguments $arguments
   echo -e $switches "${errorcolor}$arguments${removecolor}"
+}
+
+# Trace colors for set -x
+echo_debug() {
+  local BASH_XTRACEFD=7
+  command="${@@Q}"
+  eval $command
 }
