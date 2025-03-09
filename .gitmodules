@@ -1,3 +1,6 @@
 [submodule "steam-using-gamescope-guide"]
 	path = steam-using-gamescope-guide
 	url = https://github.com/shahnawazshahin/steam-using-gamescope-guide
+[submodule "rpm-tools"]
+	path = rpm-tools
+	url = https://github.com/PVermeer/rpm-tools.git
