@@ -1,14 +1,24 @@
+# Create an option to build locally without fetchting own repo
+# for sourcing and patching
+%bcond local 0
+
+# Source repo
 %global author shahnawazshahin
-%global repository steam-using-gamescope-guide
-%global maincommit 41095240664afd9672b9861cd6892ae7133dbba6
-%global mainversioncommit %(echo -n %{maincommit} | head -c 8)
+%global source steam-using-gamescope-guide
+%global sourcerepo https://github.com/shahnawazshahin/steam-using-gamescope-guide
+%global commit b07894de5668b64097b89422c5d48c48a35707ef
+%global versioncommit %(echo -n %{commit} | head -c 8)
+
+# Own copr repo
+%global coprrepo https://github.com/PVermeer/copr_gamescope-session-guide
+%global coprsource copr_gamescope-session-guide
 
 Name: gamescope-session-guide
-Version: 0.0.2
-Release: %{mainversioncommit}%{?dist}
+Version: 0.0.3
+Release: %{versioncommit}%{?dist}
 License: MIT
 Summary: RPM package to add a gamescope-session to login session options.
-Url: https://github.com/%{author}/%{repository}
+Url: %{coprrepo}
 
 BuildRequires: git
 
@@ -16,39 +26,53 @@ Requires: gamescope
 Requires: mangohud
 Requires: steam
 
-# Autopatch does not work because reasons....
-Source1: add-enviroment-variable-for-prefer-output.patch
-
-%define workdir %{_builddir}/%{repository}
+%define workdir %{_builddir}/%{name}
+%define coprdir %{workdir}/%{coprsource}
+%define sourcedir %{workdir}/%{source}
 
 %description
 Personal RPM package to install a gamescope-session on Fedora (bazzite).
 
 This packages requires steam to be preinstalled. If steam is not installed it will fail to install.
 
-The configuration is provided by https://github.com/%{author}/%{repository}.
+The configuration is provided by %{source}.
 
 %prep
-# Get the repo
-git clone https://github.com/%{author}/%{repository} %{workdir}
-cd %{workdir}
-git reset --hard %{maincommit}
+# To apply working changes handle sources / patches locally
+# COPR should clone the commited changes
+%if %{with local}
+  # Get sources / patches - local build
+  mkdir -p %{coprdir}
+  cp -r %{_topdir}/SOURCES/* %{coprdir}
+%else
+  # Get sources / patches - COPR build
+  git clone %{coprrepo} %{coprdir}
+  cd %{coprdir}
+  rm -rf .git
+  cd %{workdir}
+%endif
 
-# Autopatch does not work because reasons....
-git apply %{SOURCE1}
+# Get source repo
+git clone %{sourcerepo} %{sourcedir}
+cd %{sourcedir}
+git reset --hard %{commit}
+
+# Apply patches
+git apply %{coprdir}/patches/add-enviroment-variable-for-prefer-output.patch
 
 rm -rf .git
+cd %{workdir}
 
 %build
 
 %install
 mkdir -p %{buildroot}/usr
-cp -r %{workdir}/usr/* %{buildroot}/usr/
+cp -r %{sourcedir}/usr/* %{buildroot}/usr/
 
 %check
+
+%post
 
 %files
 %{_bindir}/*
 %{_datadir}/*
-
-%post
