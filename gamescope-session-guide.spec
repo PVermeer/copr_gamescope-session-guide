@@ -6,7 +6,7 @@
 %global author shahnawazshahin
 %global source steam-using-gamescope-guide
 %global sourcerepo https://github.com/shahnawazshahin/steam-using-gamescope-guide
-%global commit dfgrrgsgdfg
+%global commit b07894de5668b64097b89422c5d48c48a35707ef
 %global versioncommit %(echo -n %{commit} | head -c 8)
 
 # Own copr repo
