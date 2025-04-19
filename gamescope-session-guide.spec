@@ -15,7 +15,7 @@
 
 Name: gamescope-session-guide
 Version: 0.0.3
-Release: %{versioncommit}%{?dist}
+Release: 1.%{versioncommit}%{?dist}
 License: MIT
 Summary: RPM package to add a gamescope-session to login session options.
 Url: %{coprrepo}
