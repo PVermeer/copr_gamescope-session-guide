@@ -14,7 +14,7 @@
 %global coprsource copr_gamescope-session-guide
 
 Name: gamescope-session-guide
-Version: 0.0.3
+Version: 0.0.4
 Release: 1.%{versioncommit}%{?dist}
 License: MIT
 Summary: RPM package to add a gamescope-session to login session options.
@@ -31,7 +31,7 @@ Requires: steam
 %define sourcedir %{workdir}/%{source}
 
 %description
-Personal RPM package to install a gamescope-session on Fedora (bazzite).
+RPM package to install a gamescope-session on Fedora (bazzite).
 
 This packages requires steam to be preinstalled. If steam is not installed it will fail to install.
 
