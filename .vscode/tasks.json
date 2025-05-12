@@ -12,6 +12,16 @@
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "Build RPM as COPR",
+      "type": "shell",
+      "command": "bash ./rpm-tools/rpm-tool build --without-local",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      }
     }
   ]
 }
