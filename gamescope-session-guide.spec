@@ -58,7 +58,7 @@ cd %{sourcedir}
 git reset --hard %{commit}
 
 # Apply patches
-git apply %{coprdir}/patches/add-enviroment-variable-for-prefer-output.patch
+git apply %{coprdir}/patches/%{source}/add-enviroment-variable-for-prefer-output.patch
 
 rm -rf .git
 cd %{workdir}
