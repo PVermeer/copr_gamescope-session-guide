@@ -6,7 +6,7 @@
 %global author shahnawazshahin
 %global source steam-using-gamescope-guide
 %global sourcerepo https://github.com/shahnawazshahin/steam-using-gamescope-guide
-%global commit e6b2c408480dbf4af9c4d947ff399abd07b66341
+%global commit 16f3862ea26d15b877cb4469fefb4cc700d7992b
 %global versioncommit %(echo -n %{commit} | head -c 8)
 
 # Own copr repo
@@ -15,7 +15,7 @@
 
 Name: gamescope-session-guide
 Version: 0.0.4
-Release: 3.%{versioncommit}%{?dist}
+Release: 4.%{versioncommit}%{?dist}
 License: MIT
 Summary: RPM package to add a gamescope-session to login session options.
 Url: %{coprrepo}
