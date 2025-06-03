@@ -12,7 +12,7 @@ Gamescope session is launched with `--prefer-output $GAMESCOPE_SESSION_OUTPUT` s
 # Gamescope session display connector
 GAMESCOPE_SESSION_OUTPUT=DP-1
 ```
-in `/etc/enviroment` will try to use the display of your choice.
+in `/etc/environment` will try to use the display of your choice.
 
 # Fedora copr
 https://copr.fedorainfracloud.org/coprs/pvermeer/gamescope-session-guide
