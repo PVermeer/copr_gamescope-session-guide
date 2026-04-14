@@ -13,6 +13,7 @@ jobs:
       copr_owner: pvermeer
       copr_project: gamescope-session-guide
       copr_package: gamescope-session-guide
+      check_for_forked: true
     permissions:
       contents: write
     secrets:
