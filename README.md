@@ -1,3 +1,5 @@
+> ⚠️ **Warning:** Deprecated in favour of [Terra packages](https://terrapkg.com/). See [pkgs.org](https://pkgs.org/search/?q=gamescope-session) for the available packages.
+
 # RPM build of [steam-using-gamescope-guide ](https://github.com/shahnawazshahin/steam-using-gamescope-guide)
 [![Copr build status](https://copr.fedorainfracloud.org/coprs/pvermeer/gamescope-session-guide/package/gamescope-session-guide/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/pvermeer/gamescope-session-guide/package/gamescope-session-guide/)
 
